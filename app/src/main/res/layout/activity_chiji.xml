@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@id/start_page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--<top.wefor.dragmorepagepractice.chiji.MyBeiSaiErView-->
+                    <!--android:id="@+id/myBeiSaiErView"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="320dp"-->
+                    <!--/>-->
+
+                <ImageView
+                    android:background="#78c3e1"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"/>
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Display1"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="#ece9cd"
+                    android:gravity="center"
+                    android:text="吃鸡大佬们"/>
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Display1"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="#f5f3de"
+                    android:gravity="center"
+                    android:text="大吉大利\n晚上吃鸡"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="广告位出租"/>
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#dfa"
+            android:orientation="vertical"
+            app:layout_behavior="@string/drag_page_behavior"
+            >
+
+            <LinearLayout
+                android:layout_marginTop="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="章鱼吃鸡"/>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="#aaa"/>
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="大吉大利"/>
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+
+    </android.support.design.widget.CoordinatorLayout>
