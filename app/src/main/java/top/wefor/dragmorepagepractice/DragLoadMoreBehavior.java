@@ -64,7 +64,7 @@ public class DragLoadMoreBehavior extends CoordinatorLayout.Behavior<View> {
      */
     private boolean mShowMorePage = false;
     private View mChildScrollView;
-    private boolean enableSwitcher = false;
+    private boolean enableSwitcher = true;
 
     private static final int INVALID_POINTER = -1;
     private int mScrollChildPosition = 0;

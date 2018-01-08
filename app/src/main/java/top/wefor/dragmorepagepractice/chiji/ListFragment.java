@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import top.wefor.dragmorepagepractice.DragLoadMoreBehavior;
 import top.wefor.dragmorepagepractice.R;
 
 /**
@@ -55,6 +57,16 @@ public class ListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         mRecyclerView = view.findViewById(R.id.recyclerView);
+        view.findViewById(R.id.btn_back).setOnClickListener(v -> {
+            final View bottomLayout = getActivity().findViewById(R.id.bottom_layout);
+            if (bottomLayout != null && bottomLayout.getLayoutParams() instanceof CoordinatorLayout.LayoutParams) {
+                final CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomLayout.getLayoutParams();
+                if (layoutParams.getBehavior() instanceof DragLoadMoreBehavior) {
+                    final DragLoadMoreBehavior behavior = (DragLoadMoreBehavior) layoutParams.getBehavior();
+                    behavior.showMorePage(false);
+                }
+            }
+        });
         mPosTv = view.findViewById(R.id.pos_tv);
         mPos = getArguments().getString(KEY_POS);
         Log.i(TAG, "onCreateView");
@@ -134,7 +146,7 @@ public class ListFragment extends Fragment {
     private MyAdapter mMyAdapter;
 
     private class MyAdapter extends RecyclerView.Adapter<MyHolder> {
-        public ArrayList<String> mTitles = new ArrayList<>();
+        ArrayList<String> mTitles = new ArrayList<>();
 
         @Override
         public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -158,7 +170,7 @@ public class ListFragment extends Fragment {
         TextView titleTv;
         ImageView picIv;
 
-        public MyHolder(View itemView) {
+        MyHolder(View itemView) {
             super(itemView);
             titleTv = itemView.findViewById(R.id.title_tv);
             picIv = itemView.findViewById(R.id.pic_iv);
